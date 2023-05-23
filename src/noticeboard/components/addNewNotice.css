@@ -1,3 +1,16 @@
 .new_notice{
     margin-top: 200px;
 }
+
+.error_message{
+    background-color: rgba(215, 90, 90, 0.981);
+    text-align: left;
+    height:40px;
+    color: antiquewhite;
+    text-shadow: 0cqb;
+    text-decoration-style: solid;
+}
+
+.error_message_point{
+    padding: 5px;
+}
