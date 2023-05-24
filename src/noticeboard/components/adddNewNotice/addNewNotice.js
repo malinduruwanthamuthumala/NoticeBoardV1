@@ -63,9 +63,9 @@ const NewNoticeForm = (props) => {
   };
 
   const addErrorMessage = (message) => {
-    debugger;
+     let id = Math.random().toString();
     setErrorMessage((prevData) => {
-      return [...prevData, message];
+      return [...prevData, [id,message]];
     });
   };
   return (
@@ -100,13 +100,18 @@ const NewNoticeForm = (props) => {
         </MDBBtn>
       </form>
       {/* create a new component for error message section */}
+      
       {errorMessages.map((error) => {
-        return (
-          <ul className="error_message ">
-            <li className="error_message_point">{error}</li>
-          </ul>
-        );
-      })}
+        const [id,message] = error;
+        return (     
+          <ul className="error_message" >    
+            <li className="error_message_point" key={id}>{message}</li> 
+            </ul>       
+        );       
+      })
+    
+      }
+     
     </CardMDL>
   );
 };
