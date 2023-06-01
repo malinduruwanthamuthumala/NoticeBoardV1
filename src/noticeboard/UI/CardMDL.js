@@ -10,15 +10,15 @@ const CardMDL = (props) => {
     return (
         <div className={`${props.className}`}>
             <div className = "row">
-                <div className="col-md-3"></div>
-                <div className="col-md-6">
+                <div className="col-md-1"></div>
+                <div className="col-md-10">
                 <MDBCard alignment='center'>
                 <MDBCardBody>
                     {props.children}
                 </MDBCardBody>
                 </MDBCard>
                 </div>
-                <div className="col-md-3"></div>
+                <div className="col-md-1"></div>
             </div>
         </div>
     )

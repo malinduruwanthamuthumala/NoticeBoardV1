@@ -22,7 +22,7 @@ const LandingPage = (props)=>{
                 <div className="col-md-7">           
                     <NewNoticeForm onAddNewNotice={onNewNoticeAdd}></NewNoticeForm>
                     <NoticeList noticeList={noticeList}></NoticeList>
-                    <NoticeListArchive></NoticeListArchive>
+                    
                 </div>
                 <div className="col-md-3">
 

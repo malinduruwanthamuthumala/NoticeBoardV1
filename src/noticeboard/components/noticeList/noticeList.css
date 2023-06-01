@@ -1,0 +1,22 @@
+.notice-list-left {
+    text-align: left;
+    color:rgb(101, 103, 117)
+}
+
+.left{
+    text-align:left;
+}
+
+.noticeCard{
+  border-color: blue;
+  border-width: 1px;
+  border-top: 1px normal;  
+  background-color: rgb(207, 245, 245);
+  padding-top: 5px;
+  margin-top: 10px;
+  height:auto;
+}
+
+.subject{
+    padding:2px;
+}

@@ -21,7 +21,12 @@ const NewNoticeForm = (props) => {
     if (!isNoticeDataValid()) {
       return;
     }
-    console.log(subject, email, message);
+    props.onAddNewNotice({
+      id:Math.random().toString,
+      email:email,
+      subject:subject,
+      message:message,
+    });
     resetForm();
   };
 
@@ -104,8 +109,8 @@ const NewNoticeForm = (props) => {
       {errorMessages.map((error) => {
         const [id,message] = error;
         return (     
-          <ul className="error_message" >    
-            <li className="error_message_point" key={id}>{message}</li> 
+          <ul className="error_message"  key={id}>    
+            <li className="error_message_point" >{message}</li> 
             </ul>       
         );       
       })
