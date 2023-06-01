@@ -8,6 +8,7 @@ const NewNoticeForm = (props) => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [errorMessages, setErrorMessage] = useState([]);
+  const errorMessagesToModel = [];
 
   let validEmail = true;
   let validSubject = true;
@@ -17,9 +18,11 @@ const NewNoticeForm = (props) => {
     event.preventDefault();
     setErrorMessage([]);
     triggerValidationRuleSet();
-    debugger;
+  
     if (!isNoticeDataValid()) {
-      return;
+      debugger
+      props.whenFormContainsErrors(errorMessagesToModel);
+      return
     }
     props.onAddNewNotice({
       id:Math.random().toString,
@@ -33,15 +36,15 @@ const NewNoticeForm = (props) => {
   function triggerValidationRuleSet() {
     if (subject.trim().length === 0) {
       validSubject = false;
-      addErrorMessage("subject cannot be empty");
+      addErrorMessage("subject cannot be empty , Please Enter an non empty subject");
     }
     if (message.trim().length === 0) {
       validMessage = false;
-      addErrorMessage("message cannot be empty");
+      addErrorMessage("message cannot be empty , please Enter an non empty message");
     }
     if (email.trim().length === 0) {
       validEmail = false;
-      addErrorMessage("email cannot be empty");
+      addErrorMessage("email cannot be empty, please Enter an valid email");
     }
   }
 
@@ -72,6 +75,7 @@ const NewNoticeForm = (props) => {
     setErrorMessage((prevData) => {
       return [...prevData, [id,message]];
     });
+    errorMessagesToModel.push(message);
   };
   return (
     <CardMDL className="new_notice">
