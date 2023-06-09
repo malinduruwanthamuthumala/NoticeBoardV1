@@ -34,7 +34,7 @@ const LandingPage = (props)=>{
         setIsModelHidden(false);
     }
 
-    React.useState(()=>{
+    React.useEffect(()=>{
         debugger
         const noticeListfromstorage = localStorage.getItem("noticeList");
         const allowIn = isJSONCompatible(noticeListfromstorage);
