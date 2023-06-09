@@ -12,7 +12,7 @@ function App() {
 
   React.useEffect(()=>{
     const isUserLoggedIn = localStorage.getItem("isLoggedIn") == 1 ? true : false;
-    setIsLoggedIn(true);
+    setIsLoggedIn(isUserLoggedIn  );
   },[])
 
   const logginHandler = ()=>{
