@@ -10,11 +10,18 @@ function App() {
 
   const [isLoggedIn,setIsLoggedIn] = React.useState(false);
 
+  React.useEffect(()=>{
+    const isUserLoggedIn = localStorage.getItem("isLoggedIn") == 1 ? true : false;
+    setIsLoggedIn(true);
+  },[])
+
   const logginHandler = ()=>{
+    localStorage.setItem("isLoggedIn","1")
     setIsLoggedIn(true);
   }
 
   const logoutHandler = ()=>{
+    localStorage.setItem("isLoggedIn","0")
     setIsLoggedIn(false);
   }
 
