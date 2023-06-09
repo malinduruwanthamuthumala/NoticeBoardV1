@@ -13,6 +13,24 @@ const LoginPage = (props) => {
     props.onLoggedIn();
   }
 
+  const [entEredEmail,setEnteredEmail] = React.useState("");
+  const [enteredPassword,setEnteredPassword] = React.useState("");
+  const [isFormValid,setIsFormValid] = React.useState(false);
+
+  React.useEffect(()=>{
+    debugger;
+    setIsFormValid(
+         entEredEmail.length>0 && enteredPassword.length>0        
+    )
+  },[entEredEmail,enteredPassword])
+
+  const onEmailChange = (event) =>{
+    setEnteredEmail(event.target.value)
+  }
+
+  const onPasswordChange = (event) => {
+    setEnteredPassword(event.target.value);
+  }
   return (
     <React.Fragment>
       <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
@@ -21,12 +39,14 @@ const LoginPage = (props) => {
           label="Email address"
           id="form1"
           type="email"
+          onChange={onEmailChange}
         />
         <MDBInput
           wrapperClass="mb-4"
           label="Password"
           id="form2"
           type="password"
+          onChange={onPasswordChange}
         />
 
         <div className="d-flex justify-content-between mx-3 mb-4">
@@ -39,7 +59,8 @@ const LoginPage = (props) => {
           <a href="!#">Forgot password?</a>
         </div>
 
-        <MDBBtn className="mb-4" onClick={signUpHandler}>Sign in</MDBBtn>
+
+        <MDBBtn className="mb-4" onClick={signUpHandler} disabled={!isFormValid}>Sign in</MDBBtn>
 
         <div className="text-center">
           <p>

@@ -16,7 +16,7 @@ const LandingPage = (props)=>{
         );
         const fromStorage = localStorage.getItem("noticeList");
         let listConverted = [];
-        if (isJSONCompatible(fromStorage)){
+        if (isJSONCompatible(fromStorage) && fromStorage){
             listConverted = JSON.parse(fromStorage);
         }
         listConverted.push(notice);
