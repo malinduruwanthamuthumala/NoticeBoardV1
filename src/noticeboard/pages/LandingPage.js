@@ -25,13 +25,14 @@ const LandingPage = (props)=>{
     }
 
     return(
-        <div className="container-fluid">
+        <React.Fragment>
             { errors.length>0 && isModelHidden && <ErrorModel title="Following Errors Found with the form submision " message="something went wrong" errors= {errors} closeModel={onModelClose}></ErrorModel>}
             <div className="row">
                 <div className="col-md-2">
 
                 </div>
-                <div className="col-md-7">           
+                <div className="col-md-7"> 
+                          
                     <NewNoticeForm onAddNewNotice={onNewNoticeAdd} whenFormContainsErrors={handleFormErrors}> </NewNoticeForm>
                     <NoticeList noticeList={noticeList}></NoticeList>
                     
@@ -41,7 +42,7 @@ const LandingPage = (props)=>{
                 </div>
             </div>
             
-        </div>
+        </React.Fragment>
     )
 }
 
