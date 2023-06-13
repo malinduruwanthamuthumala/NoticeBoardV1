@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useContext } from 'react';
 import {
   MDBContainer,
   MDBNavbar,
@@ -15,15 +15,18 @@ import {
   MDBDropdownItem,
   MDBCollapse,
 } from 'mdb-react-ui-kit';
+import AuthContext from '../store/auth-context';
 
 export default function NavBar(props) {
+  const auth =useContext(AuthContext)
   const [showBasic, setShowBasic] = useState(false);
 
   const logoutHandler = () => {
     props.onLogout();
   }
   return (
-    <MDBNavbar expand='lg' light bgColor='light'>
+   
+          <MDBNavbar expand='lg' light bgColor='light'>
       <MDBContainer fluid>
         <MDBNavbarBrand href='#'>Brand</MDBNavbarBrand>
 
@@ -38,15 +41,19 @@ export default function NavBar(props) {
 
         <MDBCollapse navbar show={showBasic}>
           <MDBNavbarNav className='mr-auto mb-2 mb-lg-0'>
+          
             <MDBNavbarItem>
+            {auth.isLoggedIn && (
+            
               <MDBNavbarLink active aria-current='page' href='#'>
                 Home
               </MDBNavbarLink>
+             )}
             </MDBNavbarItem>
             <MDBNavbarItem>
-              <MDBNavbarLink onClick={logoutHandler}>logout</MDBNavbarLink>
+              <MDBNavbarLink onClick={logoutHandler} hidden={!auth.isLoggedIn}>logout</MDBNavbarLink>
             </MDBNavbarItem>
-
+            {auth.isLoggedIn && (
             <MDBNavbarItem>
               <MDBDropdown>
                 <MDBDropdownToggle tag='a' className='nav-link' role='button'>
@@ -59,14 +66,15 @@ export default function NavBar(props) {
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavbarItem>
-
+            )}
           </MDBNavbarNav>
-
+            
           
          
         
         </MDBCollapse>
       </MDBContainer>
     </MDBNavbar>
+    
   );
 }

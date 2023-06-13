@@ -5,6 +5,7 @@ import LandingPage from './noticeboard/pages/LandingPage';
 import NavBar from './noticeboard/components/navBar';
 import LoginPage from './noticeboard/pages/loginPage';
 import React from 'react';
+import AuthContext from './noticeboard/store/auth-context';
 
 function App() {
 
@@ -27,10 +28,13 @@ function App() {
 
   return (
     <div>
+      <AuthContext.Provider value={{
+      isLoggedIn : isLoggedIn,
+    }}>
       <NavBar onLogout={logoutHandler}></NavBar>
       {!isLoggedIn && <LoginPage onLoggedIn={logginHandler} />}
       {isLoggedIn && <LandingPage ></LandingPage>}
-
+      </AuthContext.Provider>
       
     </div>
   );
