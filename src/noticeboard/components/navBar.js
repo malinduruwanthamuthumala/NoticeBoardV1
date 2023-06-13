@@ -22,7 +22,7 @@ export default function NavBar(props) {
   const [showBasic, setShowBasic] = useState(false);
 
   const logoutHandler = () => {
-    props.onLogout();
+    auth.onLogout();
   }
   return (
    
