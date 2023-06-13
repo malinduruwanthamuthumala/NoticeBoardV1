@@ -6,6 +6,7 @@ import {
   MDBBtn,
   MDBIcon,
 } from "mdb-react-ui-kit";
+import authContext from "../store/auth-context";
 
 const LoginPage = (props) => {
   
